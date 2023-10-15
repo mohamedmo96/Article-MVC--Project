@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Article.core.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<div class="card-body" style="    margin-left: 548px;
+    margin-top: 43px;
+    margin-bottom: 27px;">
+    <a href="@Url.Action("Create", "Product" )">
+        <div style="align-items:center" class="btn btn-success">
+
+            Add New Product
+        </div>
+    </a>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="card" style="width: 18rem; display:inline-block; margin-left: 20px ;  margin-right: 10px; margin-bottom: 46px;">
+        <div class="card-body">
+            <h5 class="card-title">@item.name</h5>
+            <p class="card-text">  Product price : @item.price</p>
+        </div>
+        <ul class="list-group list-group-flush">
+
+
+            <li class="list-group-item"> Product description  :@item.description</li>
+        </ul>
+        <div class="card-body">
+            <a href="@Url.Action("Details", "Product" , new { id = @item.id }, null)">
+                <div style="align-items:center" class="btn btn-primary">
+
+                    Details
+                </div>
+            </a>
+        </div>
+        <div class="card-body" style="    margin-left: 95px; margin-top: -69px;">
+            <a href="@Url.Action("Delete", "Product" , new { id = @item.id })">
+                <div style="align-items:center" class="btn btn-danger">
+
+                    Delete
+                </div>
+            </a>
+        </div>
+        <div class="card-body" style="       margin-left:184px ; margin-top: -69px;">
+            <a href="@Url.Action("Edit", "Product" , new { id = @item.id })">
+                <div style="align-items:center" class="btn btn-danger">
+
+                    Edit
+                </div>
+            </a>
+        </div>
+    </div>
+}
